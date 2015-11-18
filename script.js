@@ -15,9 +15,13 @@ function getMessages (callback) {
 
 $('#submit-message').submit(function (e) {
   e.preventDefault();
-
   /* TODO: send message to server */
-
+  
+  var username = $('#submit-user').val();
+  var content = $('#submit-content').val();
+  
+  sendMessage(username, content);
+  
 });
 
 
@@ -28,8 +32,14 @@ window.setInterval(function () {
   getMessages(function (messages) {
     // empty message log
     $('.messages').empty();
-
+    
+    
+      for(var i = 0; i < messages.length; i++){
+        var message = messages[i];
+        var text = message.user+ ': '+ message.content;
+        $('.messages').append('<i>' + text + '<i>');
+      }
     // TODO: append messages to <ul class="messages">
   });
 
-}, 300);
+}, 1);
