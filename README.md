@@ -40,3 +40,9 @@ To push to GitHub run the following commands in your terminal:
 ###3)
 
 Use the starter code in index.html and script.js
+
+###4)
+
+Tips:
+
+You can go to https://node-slack-christopherjkim.c9.io/messages in your browser to see the last 20 messages.

@@ -21,8 +21,15 @@ $('#submit-message').submit(function (e) {
 });
 
 
-/* TODO: use setInterval to periodically get new messages and update the list */
+/* use setInterval to periodically get new messages and update the list */
 
-getMessages(function (messages) {
-  console.log(messages);
-});
+window.setInterval(function () {
+
+  getMessages(function (messages) {
+    // empty message log
+    $('.messages').empty();
+
+    // TODO: append messages to <ul class="messages">
+  });
+
+}, 300);
