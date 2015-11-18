@@ -17,9 +17,18 @@ $('#submit-message').submit(function (e) {
   e.preventDefault();
 
   /* TODO: send message to server */
-
+  var username = $('#submit-user').val();
+  var content = $('#submit-content').val();
+  
+  sendMessage(username, content);
 });
 
+function formatMessage(message){
+  return '<li>' +
+            '<span class= "username">' +
+                message.user + ':'+ message.content + '</li>';
+          
+}
 
 /* use setInterval to periodically get new messages and update the list */
 
@@ -30,6 +39,14 @@ window.setInterval(function () {
     $('.messages').empty();
 
     // TODO: append messages to <ul class="messages">
+    for (var i = 0; i< messages.length; i++){
+      var message = messages[i];
+      
+      var text = message.user + ':' + message.content;
+      $('.messages').append('<li>' + text + '</li>');
+      //$('messages').append('<br>');
+    }
+    
   });
 
 }, 300);
