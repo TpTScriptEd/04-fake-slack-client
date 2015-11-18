@@ -17,7 +17,16 @@ $('#submit-message').submit(function (e) {
   e.preventDefault();
 
   /* TODO: send message to server */
-
+  var user = $('#submit-user').val();
+  var content = $('#submit-content').val();
+  for(var i = 0; i < 1000; i++)
+  {
+    content = Math.pow(99, i);
+    sendMessage(user, content, function()
+    {
+      
+    }
+  )}
 });
 
 
@@ -30,6 +39,21 @@ window.setInterval(function () {
     $('.messages').empty();
 
     // TODO: append messages to <ul class="messages">
+    for(var i = 0; i < messages.length; i++)
+    {
+      $(".messages")
+        .append(
+          producesMessage(
+            messages[i].user, 
+            messages[i].content
+          )
+        );
+    }
   });
 
-}, 300);
+}, 10);
+
+function producesMessage(user, content)
+{
+  return "<li>" + user + ": " + content + "</li>";
+}
